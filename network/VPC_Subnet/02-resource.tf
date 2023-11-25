@@ -31,7 +31,7 @@ resource "aws_subnet" "default" {
     for_each                = { for sub in var.subnets : sub.identifier => sub 
                                     if length(aws_vpc.default) != 0 }
     vpc_id                  = local.vpc_id[each.value.vpc_identifier]
-    availability_zone       = "${data.aws_region.current.name}${each.value.availability_zone}"
+    availability_zone       = each.value.availability_zone
     cidr_block              = each.value.cidr_block
     tags                    = merge(each.value.tags, {
                                 "Name" = join("-", ["sub", var.Share_Middle_Name, each.value.name_prefix]) 

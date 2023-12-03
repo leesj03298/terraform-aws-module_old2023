@@ -25,13 +25,13 @@ variable "security_groups" {
   }
 }
 
-variable "security_group_rule"{
-    type = list(object({
-        securitygroup               = string
-        protocol                    = string
-        portrange                   = string
-        source                      = string
-        description                 = optional(string, " ")
-        type                        = optional(string, "ingress")
-    }))
+variable "security_group_rule" {
+  type = list(object({
+    securitygroup = string
+    protocol      = string
+    portrange     = string
+    source        = string
+    description   = optional(string, " ")
+    type          = optional(string, "ingress")
+  }))
 }

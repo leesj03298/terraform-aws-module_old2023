@@ -24,3 +24,14 @@ variable "security_groups" {
     error_message = "vpc_identifier is a required field."
   }
 }
+
+variable "security_group_rule"{
+    type = list(object({
+        securitygroup               = string
+        protocol                    = string
+        portrange                   = string
+        source                      = string
+        description                 = optional(string, " ")
+        type                        = optional(string, "ingress")
+    }))
+}
